@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Enlaces</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            color: #2c3e50;
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+            width: 100%;
+            max-width: 400px;
+        }
+        .link {
+            text-decoration: none;
+            padding: 1em;
+            background-color: #2980b9;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+        .link:hover {
+            background-color: #3498db;
+        }
+        .donation {
+            margin-top: 2em;
+            font-size: 1em;
+            text-align: center;
+            color: #555;
+        }
+        .donation p {
+            margin: 0.5em 0;
+        }
+        .donation address {
+            font-style: normal;
+            color: #2c3e50;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mis Enlaces</h1>
+    <div class="links">
+        <a href="https://tuenlace1.com" class="link">Enlace 1</a>
+        <a href="https://tuenlace2.com" class="link">Enlace 2</a>
+        <a href="https://tuenlace3.com" class="link">Enlace 3</a>
+    </div>
+    <div class="donation">
+        <p>Si te ayudé, aquí puedes devolverme el favor:</p>
+        <p>ETH: <address>0xTuDireccionETH</address></p>
+        <p>BTC: <address>1TuDireccionBTC</address></p>
+    </div>
+</body>
+</html>
