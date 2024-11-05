@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rrick Sanchez</title>
+    <title>RRick Sanchez</title>
     <!-- Favicon -->
     <link rel="icon" href="favicon-32x32.png" type="image/x-icon">
     <style>
@@ -68,13 +68,31 @@
             color: #555;
         }
         .donation p {
-            margin: 0.5em 0;
+            margin: 1em 0;
         }
         .donation address {
             font-style: normal;
             color: #2c3e50;
             word-break: break-word;
-            margin-top: 0.5em; /* Añade margen adicional encima de cada dirección */
+            margin-bottom: 1em;
+        }
+        .copy-btn {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 0.3em 0.5em;
+            border-radius: 5px;
+            margin-top: 0.5em;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .copy-btn:hover {
+            background-color: #3498db;
+        }
+        .private-link {
+            font-size: 0.9em;
+            color: #2980b9;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -91,10 +109,22 @@
     </div>
     <div class="donation">
         <p>Si te ayudé, aquí puedes devolverme el favor:</p>
-        <p>ETH: <address>0x93b6B4a8F475F462dE2925c1753e232741F15605</address></p>
-        <p>ETH en privado: https://ricksanchez.fkey.id<address></address></p>
-        <p>BTC: <address>bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme</address></p>
-    
+        <p>ETH: <address>0x93b6B4a8F475F462dE2925c1753e232741F15605</address>
+        <button class="copy-btn" onclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605')">Copiar</button>
+        </p>
+        <p>BTC: <address>bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme</address>
+        <button class="copy-btn" onclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme')">Copiar</button>
+        </p>
+        <p><a href="https://linkdepagina.com" class="private-link" target="_blank">Envío privado aquí</a></p>
     </div>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Dirección copiada al portapapeles');
+            }, function(err) {
+                console.error('Error al copiar: ', err);
+            });
+        }
+    </script>
 </body>
 </html>
