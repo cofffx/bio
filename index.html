@@ -13,16 +13,17 @@
     <link rel="preconnect" href="https://t.me">
     <link rel="preconnect" href="https://x.com">
     
-    <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Definición de variables CSS con colores semánticos */
         :root {
             --color-primary: #2980b9;
             --color-primary-hover: #3498db;
+            --color-gradient-start: #2980b9;
+            --color-gradient-end: #1abc9c;
             --color-text: #333;
             --color-text-secondary: #555;
-            --color-heading: #2c3e50;
             --color-background: #f5f5f5;
             --color-white: #fff;
             --color-shadow: rgba(0, 0, 0, 0.1);
@@ -30,143 +31,234 @@
             --transition-speed: 0.3s;
         }
 
-        /* Reset y configuraciones base */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Estilos base mejorados */
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            line-height: 1.5;
-            color: var(--color-text);
+            margin: 0;
             min-height: 100vh;
-            display: grid;
-            place-items: center;
-            padding: 1rem;
-            background-color: var(--color-background);
-        }
-
-        /* Contenedor principal con mejor contraste */
-        .container {
-            background: var(--color-white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px var(--color-shadow);
-            width: min(100%, 500px);
-            margin: auto;
-        }
-
-        /* Mejoras en la sección de perfil */
-        .profile-container {
+            background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .profile {
-            text-align: center;
-        }
-
-        .profile img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--color-primary);
-            box-shadow: 0 4px 10px var(--color-shadow);
-        }
-
-        .profile-name {
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--color-text);
-        }
-
-        /* Enlaces mejorados con mejor accesibilidad */
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            width: 100%;
-        }
-
-        .link {
-            display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 1rem;
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: transform var(--transition-speed), 
-                      background-color var(--transition-speed);
+            color: var(--color-text);
         }
 
-        .link:hover,
-        .link:focus-visible {
-            background-color: var(--color-primary-hover);
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: min(100%, 500px);
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efecto de fondo con animación */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
+            animation: shimmer 2s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -500px 0; }
+            100% { background-position: 500px 0; }
+        }
+
+        /* Perfil mejorado */
+        .profile-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1rem;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-white);
+            box-shadow: 0 4px 15px var(--color-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .profile img:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-status {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: #2ecc71;
+            border: 3px solid var(--color-white);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+            color: var(--color-text);
+        }
+
+        .profile-bio {
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Estadísticas del perfil */
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: var(--color-background);
+            border-radius: var(--border-radius);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* Enlaces mejorados */
+        .links {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .link {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--color-white);
+            color: var(--color-text);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .link:hover {
             transform: translateY(-2px);
-            outline: 3px solid var(--color-primary);
-            outline-offset: 2px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
+            color: var(--color-white);
+        }
+
+        .link i {
+            margin-right: 1rem;
+            font-size: 1.2rem;
         }
 
         /* Sección de pagos mejorada */
         .payment-section {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--color-background);
+            background: var(--color-background);
+            margin: 2rem -2rem -2rem;
+            padding: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .payment-title {
             text-align: center;
-            margin-bottom: 1rem;
-            color: var(--color-text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--color-text);
         }
 
         .crypto-grid {
             display: grid;
             gap: 1rem;
-            grid-template-columns: 1fr;
         }
 
         .crypto-card {
-            background: var(--color-background);
+            background: var(--color-white);
             padding: 1rem;
             border-radius: 8px;
-            transition: transform var(--transition-speed);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .crypto-card:hover {
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .crypto-label {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        .crypto-label i {
+            font-size: 1.2rem;
         }
 
         .crypto-address {
             font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
             font-size: 0.875rem;
-            background: var(--color-white);
             padding: 0.75rem;
+            background: var(--color-background);
             border-radius: 4px;
-            overflow-x: auto;
             cursor: pointer;
-            border: 1px solid var(--color-background);
-            word-break: break-all;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crypto-address::after {
+            content: 'Copiar';
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            color: var(--color-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .crypto-address:hover::after {
+            opacity: 1;
         }
 
         /* Notificación de copiado mejorada */
@@ -175,14 +267,13 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--color-heading);
+            background: rgba(0, 0, 0, 0.8);
             color: var(--color-white);
             padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px var(--color-shadow);
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             opacity: 0;
-            transition: opacity var(--transition-speed),
-                      transform var(--transition-speed);
+            transition: all 0.3s ease;
         }
 
         .copy-notification.visible {
@@ -195,141 +286,194 @@
             :root {
                 --color-text: #e1e1e1;
                 --color-text-secondary: #b0b0b0;
-                --color-background: #1a1a1a;
-                --color-white: #2d2d2d;
-                --color-shadow: rgba(0, 0, 0, 0.3);
+                --color-background: #2d2d2d;
+                --color-white: #1a1a1a;
             }
 
-            body {
-                background-color: #121212;
+            .container {
+                background: rgba(26, 26, 26, 0.95);
+            }
+
+            .link {
+                background: var(--color-white);
+                border-color: rgba(255, 255, 255, 0.1);
             }
 
             .crypto-address {
-                border-color: #404040;
+                color: var(--color-text);
             }
         }
 
-        /* Reducción de animaciones si el usuario lo prefiere */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                transition: none !important;
-                animation: none !important;
-            }
+        /* Footer con redes sociales */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            background: var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
     <main class="container">
         <div class="profile-container">
-            <div class="profile">
+            <div class="profile-image-container">
                 <img src="Rick Sanchez.jpg" 
                      alt="Foto de perfil de RRick Sanchez" 
-                     width="120" 
-                     height="120"
+                     width="150" 
+                     height="150"
                      loading="eager">
-                <p class="profile-name">@RRickSanchez</p>
+                <div class="profile-status" title="En línea"></div>
             </div>
+            <h1 class="profile-name">RRick Sanchez</h1>
+            <p class="profile-bio">Desarrollador & Creador de Contenido</p>
             
-            <nav class="links" aria-label="Enlaces sociales">
-                <a href="https://t.me/RRickSanchez" 
-                   class="link" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="Contactar por Telegram">
-                    Telegram
-                </a>
-                <a href="https://x.com/RRckSanchez" 
-                   class="link" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="Seguir en Twitter">
-                    Twitter
-                </a>
-                <a href="https://t.me/Apuntes2140" 
-                   class="link" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="Ver apuntes en Telegram">
-                    Apuntes
-                </a>
-            </nav>
+            <!-- Estadísticas -->
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <div class="stat-value">1.2K</div>
+                    <div class="stat-label">Seguidores</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">508</div>
+                    <div class="stat-label">Posts</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Proyectos</div>
+                </div>
+            </div>
         </div>
+        
+        <nav class="links" aria-label="Enlaces sociales">
+            <a href="https://t.me/RRickSanchez" 
+               class="link" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                <i class="fab fa-telegram"></i>
+                Telegram
+            </a>
+            <a href="https://x.com/RRckSanchez" 
+               class="link" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                <i class="fab fa-x-twitter"></i>
+                Twitter
+            </a>
+            <a href="https://t.me/Apuntes2140" 
+               class="link" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                <i class="fas fa-book"></i>
+                Apuntes
+            </a>
+        </nav>
 
         <section class="payment-section" aria-labelledby="payment-title">
             <h2 id="payment-title" class="payment-title">
-                Si mi ayuda te fue útil, aquí tienes la opción de corresponderme
+                Apoya mi trabajo
             </h2>
             
             <div class="crypto-grid">
                 <div class="crypto-card">
-                    <div class="crypto-label">ETH</div>
-                    <button class="crypto-address" 
-                            onclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605', 'ETH')"
-                            aria-label="Copiar dirección ETH">
+                    <div class="crypto-label">
+                        <i class="fab fa-ethereum"></i>
+                        ETH
+                    </div>
+                    <div class="crypto-address" 
+                         onclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605', 'ETH')"
+                         role="button"
+                         tabindex="0">
                         0x93b6B4a8F475F462dE2925c1753e232741F15605
-                    </button>
+                    </div>
                 </div>
                 
                 <div class="crypto-card">
-                    <div class="crypto-label">BTC</div>
-                    <button class="crypto-address" 
-                            onclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme', 'BTC')"
-                            aria-label="Copiar dirección BTC">
-                        bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme
-                    </button>
-                </div>
-
-                <a href="https://ricksanchez.fkey.id" 
-                   class="crypto-card" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="Enviar ETH y tokens de manera privada">
                     <div class="crypto-label">
-                        Envía ETH y tokens de manera privada
-                        <svg class="crypto-icon" 
-                             width="16" 
-                             height="16" 
-                             viewBox="0 0 24 24" 
-                             fill="none" 
-                             aria-hidden="true">
-                            <path d="M21 3H3C1.895 3 1 3.895 1 5v14c0 1.105.895 2 2 2h18c1.105 0 2-.895 2-2V5c0-1.105-.895-2-2-2zm0 16H3V5h18v14zM10 14h9v2h-9zm0-5h9v2h-9zm-2 6h-3v2h3zm0-5h-3v2h3z" 
-                                  fill="currentColor"/>
-                        </svg>
+                        <i class="fab fa-bitcoin"></i>
+                        BTC
                     </div>
-                    <div class="crypto-address">
-                        https://ricksanchez.fkey.id
+                    <div class="crypto-address" 
+                         onclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme', 'BTC')"
+                         role="button"
+                         tabindex="0">
+                        bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme
                     </div>
-                </a>
+                </div>
             </div>
         </section>
+
+        <!-- Footer con redes sociales adicionales -->
+        <footer class="social-links">
+            <a href="#" class="social-link" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </footer>
     </main>
+
+    <div class="copy-notification" role="alert" aria-live="polite">
+        ¡Dirección copiada!
+    </div>
 
     <script>
         function copyToClipboard(text, type) {
-            navigator.clipboard.writeText(text)
-                .then(() => showNotification(`Dirección ${type} copiada`))
-                .catch(err => {
-                    console.error('Error al copiar:', err);
-                    showNotification('Error al copiar. Por favor, copia manualmente.');
-                });
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification(`¡Dirección de ${type} copiada!`);
+            }).catch(err => {
+                console.error('Error al copiar:', err);
+                showNotification('Error al copiar la dirección');
+            });
         }
 
         function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'copy-notification';
-            notification.setAttribute('role', 'alert');
+            const notification = document.querySelector('.copy-notification');
             notification.textContent = message;
-            document.body.appendChild(notification);
-
-            // Forzar un reflow para activar la transición
-            notification.offsetHeight;
             notification.classList.add('visible');
 
             setTimeout(() => {
                 notification.classList.remove('visible');
-                setTimeout(() => notification.remove(), 300);
             }, 2000);
         }
+
+        // Añadir soporte para copiar con la tecla Enter
+        document.querySelectorAll('.crypto-address').forEach(element => {
+            element.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const text = element.textContent.trim();
+                    const type = element.closest('.crypto-card').querySelector('.crypto-label').textContent.trim();
+                    copyToClipboard(text, type);
+                }
+            });
+        });
+
+        // Mejorar la accesibilidad con los estados de hover en dispositivos táctiles
+        document.addEventListener('touchstart', function() {}, true);
     </script>
 </body>
 </html>
+
+                
