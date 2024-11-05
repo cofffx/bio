@@ -30,19 +30,19 @@
             background-size: cover;
             color: var(--text-color);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
+            display: flex; /* Cambiado a flex para centrar */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+            padding: 1rem; /* Espaciado alrededor del contenedor */
         }
 
         .container {
             background: rgba(255, 255, 255, 0.95);
-            padding: 1.5rem;
+            padding: 1.5rem; /* Disminuye un poco el padding */
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 500px;
+            max-width: 500px; /* Reduce ligeramente el ancho máximo */
             margin: 1rem;
         }
 
@@ -55,8 +55,8 @@
 
         .profile {
             display: flex;
-            align-items: center; /* Alinea los elementos verticalmente */
-            gap: 1rem; /* Espacio entre imagen y enlaces */
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 2rem;
         }
 
@@ -66,11 +66,13 @@
             height: 120px;
             object-fit: cover;
             border: 3px solid var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Efecto de sombra */
         }
 
         .profile p {
             font-size: 1.2rem;
             color: var(--text-secondary);
+            text-align: center; /* Alinea el texto al centro */
         }
 
         .links {
@@ -213,18 +215,18 @@
             <img src="Rick Sanchez.jpg" alt="Foto de perfil de RRick Sanchez" loading="lazy">
             <div>
                 <p>@RRickSanchez</p>
-                <nav class="links">
-                    <a href="https://t.me/RRickSanchez" class="link" target="_blank" rel="noopener noreferrer">
-                        Telegram
-                    </a>
-                    <a href="https://x.com/RRckSanchez" class="link" target="_blank" rel="noopener noreferrer">
-                        Twitter
-                    </a>
-                    <a href="https://t.me/Apuntes2140" class="link" target="_blank" rel="noopener noreferrer">
-                        Apuntes
-                    </a>
-                </nav>
             </div>
+            <nav class="links">
+                <a href="https://t.me/RRickSanchez" class="link" target="_blank" rel="noopener noreferrer">
+                    Telegram
+                </a>
+                <a href="https://x.com/RRckSanchez" class="link" target="_blank" rel="noopener noreferrer">
+                    Twitter
+                </a>
+                <a href="https://t.me/Apuntes2140" class="link" target="_blank" rel="noopener noreferrer">
+                    Apuntes
+                </a>
+            </nav>
         </div>
 
         <section class="payment-section">
@@ -249,7 +251,7 @@
                     <a href="https://ricksanchez.fkey.id" class="crypto-link" target="_blank" rel="noopener noreferrer">
                         <div class="crypto-label">
                             Envía ETH y tokens de manera privada
-                            <svg class="crypto-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <svg class="crypto-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                 <polyline points="15 3 21 3 21 9"></polyline>
                                 <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -283,3 +285,4 @@
     </script>
 </body>
 </html>
+
