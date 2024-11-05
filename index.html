@@ -68,7 +68,7 @@
             color: #555;
         }
         .donation p {
-            margin: 1em 0;
+            margin: 0.5em 0;
         }
         .donation address {
             font-style: normal;
@@ -76,15 +76,20 @@
             word-break: break-word;
             display: inline;
         }
-        .copy-icon {
+        .copy-icon, .link-icon {
             cursor: pointer;
-            font-size: 0.8em; /* Más pequeño y sutil */
-            color: rgba(255, 255, 255, 0.6); /* Color entre blanco y transparente */
+            font-size: 0.7em;
+            color: rgba(255, 255, 255, 0.6);
             margin-left: 5px;
             transition: color 0.3s ease;
+            visibility: hidden;
         }
-        .copy-icon:hover {
+        .copy-icon:hover, .link-icon:hover {
             color: rgba(255, 255, 255, 0.9);
+        }
+        .copy-container:hover .copy-icon,
+        .private-link:hover .link-icon {
+            visibility: visible;
         }
         .private-link {
             font-size: 0.9em;
@@ -92,15 +97,6 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-        }
-        .private-link .link-icon {
-            font-size: 0.7em; /* Icono pequeño y sutil */
-            color: rgba(255, 255, 255, 0.6);
-            margin-left: 5px;
-            transition: color 0.3s ease;
-        }
-        .private-link:hover .link-icon {
-            color: rgba(255, 255, 255, 0.9);
         }
     </style>
 </head>
@@ -117,11 +113,15 @@
     </div>
     <div class="donation">
         <p>Si te ayudé, aquí puedes devolverme el favor:</p>
-        <p>ETH: <address>0x93b6B4a8F475F462dE2925c1753e232741F15605</address>
+        <p class="copy-container" ondblclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605')">
+            ETH: <address>0x93b6B4a8F475F462dE2925c1753e232741F15605</address>
             <span class="copy-icon" onclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605')">📃</span>
         </p>
-        <p><span class="private-link">https://ricksanchez.fkey.id<span class="link-icon">↵</span></span></p>
-        <p>BTC: <address>bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme</address>
+        <p><span class="private-link">linkdepagina.com
+            <span class="link-icon" onclick="window.open('https://linkdepagina.com', '_blank')">↵</span></span>
+        </p>
+        <p class="copy-container" ondblclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme')">
+            BTC: <address>bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme</address>
             <span class="copy-icon" onclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme')">📃</span>
         </p>
     </div>
