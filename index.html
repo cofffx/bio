@@ -6,7 +6,6 @@
     <meta name="description" content="Enlaces y contacto de RRick Sanchez">
     <meta name="theme-color" content="#2980b9">
     <title>RRick Sanchez - Enlaces</title>
-    <!-- Precargar imagen de fondo para mejor rendimiento -->
     <link rel="preload" href="tu-imagen-de-fondo.jpg" as="image">
     <link rel="icon" href="favicon-32x32.png" type="image/x-icon">
     <style>
@@ -16,9 +15,9 @@
             --text-color: #333;
             --text-secondary: #555;
             --heading-color: #2c3e50;
+            --bg-light: #f5f5f5;
         }
 
-        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
@@ -101,66 +100,108 @@
             transform: translateY(-2px);
         }
 
-        .link:focus-visible {
-            outline: 3px solid var(--primary-hover);
-            outline-offset: 2px;
-        }
-
-        .donation {
+        .payment-section {
             margin-top: 2rem;
             text-align: center;
             color: var(--text-secondary);
         }
 
+        .crypto-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .crypto-card {
+            background: var(--bg-light);
+            padding: 0.75rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .crypto-label {
+            font-weight: bold;
+            color: var(--heading-color);
+            font-size: 0.9rem;
+        }
+
         .crypto-address {
+            font-family: monospace;
+            font-size: 0.75rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+
+        .payment-link {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            margin: 1rem 0;
-            font-family: monospace;
-            word-break: break-all;
-            background: #f5f5f5;
-            padding: 0.5rem;
-            border-radius: 4px;
-        }
-
-        .copy-btn {
-            background: var(--primary-color);
+            background-color: #4CAF50;
             color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 0.5rem;
-            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 1rem;
             transition: background-color 0.3s ease;
         }
 
-        .copy-btn:hover {
-            background-color: var(--primary-hover);
+        .payment-link:hover {
+            background-color: #45a049;
+        }
+
+        .copy-success {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            animation: fadeInOut 2s forwards;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, 20px); }
+            15% { opacity: 1; transform: translate(-50%, 0); }
+            85% { opacity: 1; transform: translate(-50%, 0); }
+            100% { opacity: 0; transform: translate(-50%, -20px); }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .link {
+            .link, .payment-link {
                 transition: none;
             }
         }
 
-        /* Dark mode */
         @media (prefers-color-scheme: dark) {
             .container {
                 background: rgba(0, 0, 0, 0.9);
             }
-
             body {
                 color: #fff;
             }
-
             h1, .profile p {
                 color: #fff;
             }
-
-            .crypto-address {
+            .crypto-card {
                 background: #222;
+            }
+            .crypto-address {
+                background: #333;
+                color: #fff;
+                border-color: #444;
+            }
+            .crypto-label {
                 color: #fff;
             }
         }
@@ -187,46 +228,53 @@
             </a>
         </nav>
 
-        <section class="donation">
-            <h2>Donaciones</h2>
+        <section class="payment-section">
             <p>Si te ayudé, aquí puedes devolverme el favor:</p>
             
-            <div class="crypto-address">
-                <span>ETH:</span>
-                <code id="eth-address">0x93b6B4a8F475F462dE2925c1753e232741F15605</code>
-                <button class="copy-btn" aria-label="Copiar dirección ETH" onclick="copyToClipboard('eth-address')">
-                    📋
-                </button>
+            <div class="crypto-grid">
+                <div class="crypto-card">
+                    <span class="crypto-label">ETH</span>
+                    <div class="crypto-address" onclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605', 'ETH')">
+                        0x93b6B4a8F475F462dE2925c1753e232741F15605
+                    </div>
+                </div>
+                
+                <div class="crypto-card">
+                    <span class="crypto-label">BTC</span>
+                    <div class="crypto-address" onclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme', 'BTC')">
+                        bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme
+                    </div>
+                </div>
             </div>
 
-            <div class="crypto-address">
-                <span>BTC:</span>
-                <code id="btc-address">bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme</code>
-                <button class="copy-btn" aria-label="Copiar dirección BTC" onclick="copyToClipboard('btc-address')">
-                    📋
-                </button>
-            </div>
+            <a href="https://ricksanchez.fkey.id" class="payment-link" target="_blank" rel="noopener noreferrer">
+                Emvio Privado
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </a>
         </section>
     </main>
 
     <script>
-        function copyToClipboard(elementId) {
-            const element = document.getElementById(elementId);
-            const text = element.textContent;
-            
-            try {
-                navigator.clipboard.writeText(text).then(() => {
-                    // Feedback visual temporal
-                    const originalText = element.parentElement.querySelector('.copy-btn').textContent;
-                    element.parentElement.querySelector('.copy-btn').textContent = '✅';
-                    setTimeout(() => {
-                        element.parentElement.querySelector('.copy-btn').textContent = originalText;
-                    }, 2000);
-                });
-            } catch (err) {
+        function copyToClipboard(text, type) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Crear y mostrar el mensaje de éxito
+                const message = document.createElement('div');
+                message.className = 'copy-success';
+                message.textContent = `Dirección ${type} copiada`;
+                document.body.appendChild(message);
+
+                // Eliminar el mensaje después de la animación
+                setTimeout(() => {
+                    message.remove();
+                }, 2000);
+            }).catch(err => {
                 console.error('Error al copiar:', err);
                 alert('No se pudo copiar al portapapeles. Por favor, copia manualmente.');
-            }
+            });
         }
     </script>
 </body>
