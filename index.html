@@ -3,135 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRick Sanchez</title>
-    <!-- Favicon -->
+    <meta name="description" content="Enlaces y contacto de RRick Sanchez">
+    <meta name="theme-color" content="#2980b9">
+    <title>RRick Sanchez - Enlaces</title>
+    <!-- Precargar imagen de fondo para mejor rendimiento -->
+    <link rel="preload" href="tu-imagen-de-fondo.jpg" as="image">
     <link rel="icon" href="favicon-32x32.png" type="image/x-icon">
     <style>
+        :root {
+            --primary-color: #2980b9;
+            --primary-hover: #3498db;
+            --text-color: #333;
+            --text-secondary: #555;
+            --heading-color: #2c3e50;
+        }
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             background: url('tu-imagen-de-fondo.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 1rem;
         }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: 1rem;
+        }
+
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
-            color: #2c3e50;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--heading-color);
+            text-align: center;
         }
+
         .profile {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 1em;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
+
         .profile img {
             border-radius: 50%;
             width: 120px;
             height: 120px;
             object-fit: cover;
+            border: 3px solid var(--primary-color);
         }
+
         .profile p {
-            margin: 0.5em 0;
-            font-size: 1.2em;
-            color: #555;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
         }
+
         .links {
             display: flex;
             flex-direction: column;
-            gap: 1em;
-            width: 100%;
-            max-width: 300px;
+            gap: 1rem;
         }
+
         .link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            padding: 0.8em;
-            background-color: #2980b9;
+            padding: 1rem;
+            background-color: var(--primary-color);
             color: white;
             text-align: center;
             border-radius: 8px;
-            font-size: 1em;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .link:hover, .link:focus {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .link:focus-visible {
+            outline: 3px solid var(--primary-hover);
+            outline-offset: 2px;
+        }
+
+        .donation {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .crypto-address {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            word-break: break-all;
+            background: #f5f5f5;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .copy-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        .link:hover {
-            background-color: #3498db;
+
+        .copy-btn:hover {
+            background-color: var(--primary-hover);
         }
-        .donation {
-            margin-top: 2em;
-            font-size: 1em;
-            text-align: center;
-            color: #555;
+
+        @media (prefers-reduced-motion: reduce) {
+            .link {
+                transition: none;
+            }
         }
-        .donation p {
-            margin: 0.5em 0;
-        }
-        .donation address {
-            font-style: normal;
-            color: #2c3e50;
-            word-break: break-word;
-            display: inline;
-        }
-        .copy-icon, .link-icon {
-            cursor: pointer;
-            font-size: 0.7em;
-            color: rgba(255, 255, 255, 0.6);
-            margin-left: 5px;
-            transition: color 0.3s ease;
-            visibility: hidden;
-        }
-        .copy-icon:hover, .link-icon:hover {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        .copy-container:hover .copy-icon,
-        .private-link:hover .link-icon {
-            visibility: visible;
-        }
-        .private-link {
-            font-size: 0.9em;
-            color: #2c3e50;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
+
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            .container {
+                background: rgba(0, 0, 0, 0.9);
+            }
+
+            body {
+                color: #fff;
+            }
+
+            h1, .profile p {
+                color: #fff;
+            }
+
+            .crypto-address {
+                background: #222;
+                color: #fff;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="profile">
-        <img src="Rick Sanchez.jpg" alt="Foto de perfil">
-        <p>@RRickSanchez</p>
-    </div>
-    <h1>Mis Enlaces</h1>
-    <div class="links">
-        <a href="https://t.me/RRickSanchez" class="link" target="_blank">Telegram</a>
-        <a href="https://x.com/RRckSanchez" class="link" target="_blank">Twitter</a>
-        <a href="https://t.me/Apuntes2140" class="link" target="_blank">Apuntes</a>
-    </div>
-    <div class="donation">
-        <p>Si te ayudé, aquí puedes devolverme el favor:</p>
-        <p class="copy-container" ondblclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605')">
-            ETH: <address>0x93b6B4a8F475F462dE2925c1753e232741F15605</address>
-            <span class="copy-icon" onclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605')">📃</span>
-        </p>
-        <p><span class="private-link">linkdepagina.com
-            <span class="link-icon" onclick="window.open('https://linkdepagina.com', '_blank')">↵</span></span>
-        </p>
-        <p class="copy-container" ondblclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme')">
-            BTC: <address>bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme</address>
-            <span class="copy-icon" onclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme')">📃</span>
-        </p>
-    </div>
+    <main class="container">
+        <div class="profile">
+            <img src="Rick Sanchez.jpg" alt="Foto de perfil de RRick Sanchez" loading="lazy">
+            <p>@RRickSanchez</p>
+        </div>
+        
+        <h1>Mis Enlaces</h1>
+        
+        <nav class="links">
+            <a href="https://t.me/RRickSanchez" class="link" target="_blank" rel="noopener noreferrer">
+                Telegram
+            </a>
+            <a href="https://x.com/RRckSanchez" class="link" target="_blank" rel="noopener noreferrer">
+                Twitter
+            </a>
+            <a href="https://t.me/Apuntes2140" class="link" target="_blank" rel="noopener noreferrer">
+                Apuntes
+            </a>
+        </nav>
+
+        <section class="donation">
+            <h2>Donaciones</h2>
+            <p>Si te ayudé, aquí puedes devolverme el favor:</p>
+            
+            <div class="crypto-address">
+                <span>ETH:</span>
+                <code id="eth-address">0x93b6B4a8F475F462dE2925c1753e232741F15605</code>
+                <button class="copy-btn" aria-label="Copiar dirección ETH" onclick="copyToClipboard('eth-address')">
+                    📋
+                </button>
+            </div>
+
+            <div class="crypto-address">
+                <span>BTC:</span>
+                <code id="btc-address">bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme</code>
+                <button class="copy-btn" aria-label="Copiar dirección BTC" onclick="copyToClipboard('btc-address')">
+                    📋
+                </button>
+            </div>
+        </section>
+    </main>
+
     <script>
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-                alert('Dirección copiada al portapapeles');
-            }, function(err) {
-                console.error('Error al copiar: ', err);
-            });
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            try {
+                navigator.clipboard.writeText(text).then(() => {
+                    // Feedback visual temporal
+                    const originalText = element.parentElement.querySelector('.copy-btn').textContent;
+                    element.parentElement.querySelector('.copy-btn').textContent = '✅';
+                    setTimeout(() => {
+                        element.parentElement.querySelector('.copy-btn').textContent = originalText;
+                    }, 2000);
+                });
+            } catch (err) {
+                console.error('Error al copiar:', err);
+                alert('No se pudo copiar al portapapeles. Por favor, copia manualmente.');
+            }
         }
     </script>
 </body>
