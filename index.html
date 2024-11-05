@@ -109,40 +109,37 @@
         }
 
         .crypto-grid {
-        display: grid;
-        gap: 1rem;
-        margin-top: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Alinea las tarjetas en columnas */
-        justify-items: center; /* Centra las tarjetas dentro de las columnas */
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Alinea las tarjetas en columnas */
+            justify-items: center; /* Centra las tarjetas dentro de las columnas */
         }
 
-    .crypto-card {
-        background: var(--bg-light);
-        padding: 1rem; /* Aumenta el padding para mayor espacio interno */
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        width: 100%; /* Asegura que las tarjetas ocupen el ancho completo de su celda */
-        max-width: 300px; /* Limita el ancho máximo de las tarjetas */    
+        .crypto-card {
+            background: var(--bg-light);
+            padding: 1.25rem; /* Aumenta ligeramente el padding */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 400px; /* Aumenta ligeramente el ancho máximo */
         }
 
         .crypto-label {
             font-weight: bold;
             color: var(--heading-color);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }   
-        
+            font-size: 1rem; /* Aumenta el tamaño de la etiqueta */
+        }
+
         .crypto-address {
             font-family: monospace;
-            font-size: 0.75rem;
+            font-size: 0.85rem; /* Aumenta un poco el tamaño de la fuente */
             background: white;
-            padding: 0.5rem;
+            padding: 0.75rem; /* Aumenta el padding */
             border-radius: 4px;
-            overflow-x: auto; /* Agrega desplazamiento horizontal si es necesario */
+            overflow-x: auto;
             cursor: pointer;
             border: 1px solid #ddd;
             color: var(--text-color);
