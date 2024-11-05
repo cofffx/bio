@@ -74,25 +74,24 @@
             font-style: normal;
             color: #2c3e50;
             word-break: break-word;
-            margin-bottom: 1em;
+            display: inline;
         }
-        .copy-btn {
-            background-color: #2980b9;
-            color: white;
-            border: none;
-            padding: 0.3em 0.5em;
-            border-radius: 5px;
-            margin-top: 0.5em;
+        .icon {
             cursor: pointer;
-            font-size: 0.9em;
+            margin-left: 5px;
+            font-size: 1.1em;
+            color: #2980b9;
+            text-decoration: none;
         }
-        .copy-btn:hover {
-            background-color: #3498db;
+        .icon:hover {
+            color: #3498db;
         }
         .private-link {
             font-size: 0.9em;
             color: #2980b9;
             text-decoration: none;
+            margin-top: 0.5em;
+            display: inline-block;
         }
     </style>
 </head>
@@ -110,12 +109,12 @@
     <div class="donation">
         <p>Si te ayudé, aquí puedes devolverme el favor:</p>
         <p>ETH: <address>0x93b6B4a8F475F462dE2925c1753e232741F15605</address>
-        <button class="copy-btn" onclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605')">Copiar</button>
+            <span class="icon" onclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605')">📋</span>
         </p>
+        <p><a href="https://linkdepagina.com" class="icon" target="_blank">🔗 Donación privada</a></p>
         <p>BTC: <address>bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme</address>
-        <button class="copy-btn" onclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme')">Copiar</button>
+            <span class="icon" onclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme')">📋</span>
         </p>
-        <p><a href="https://linkdepagina.com" class="private-link" target="_blank">Envío privado aquí</a></p>
     </div>
     <script>
         function copyToClipboard(text) {
