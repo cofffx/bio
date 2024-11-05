@@ -76,22 +76,31 @@
             word-break: break-word;
             display: inline;
         }
-        .icon {
+        .copy-icon {
             cursor: pointer;
+            font-size: 0.8em; /* Más pequeño y sutil */
+            color: rgba(255, 255, 255, 0.6); /* Color entre blanco y transparente */
             margin-left: 5px;
-            font-size: 1.1em;
-            color: #2980b9;
-            text-decoration: none;
+            transition: color 0.3s ease;
         }
-        .icon:hover {
-            color: #3498db;
+        .copy-icon:hover {
+            color: rgba(255, 255, 255, 0.9);
         }
         .private-link {
             font-size: 0.9em;
-            color: #2980b9;
+            color: #2c3e50;
             text-decoration: none;
-            margin-top: 0.5em;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+        }
+        .private-link .link-icon {
+            font-size: 0.7em; /* Icono pequeño y sutil */
+            color: rgba(255, 255, 255, 0.6);
+            margin-left: 5px;
+            transition: color 0.3s ease;
+        }
+        .private-link:hover .link-icon {
+            color: rgba(255, 255, 255, 0.9);
         }
     </style>
 </head>
@@ -109,11 +118,11 @@
     <div class="donation">
         <p>Si te ayudé, aquí puedes devolverme el favor:</p>
         <p>ETH: <address>0x93b6B4a8F475F462dE2925c1753e232741F15605</address>
-            <span class="icon" onclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605')">📋</span>
+            <span class="copy-icon" onclick="copyToClipboard('0x93b6B4a8F475F462dE2925c1753e232741F15605')">📋</span>
         </p>
-        <p><a href="https://linkdepagina.com" class="icon" target="_blank">🔗 Donación privada</a></p>
+        <p><span class="private-link">linkdepagina.com<span class="link-icon">🔗</span></span></p>
         <p>BTC: <address>bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme</address>
-            <span class="icon" onclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme')">📋</span>
+            <span class="copy-icon" onclick="copyToClipboard('bc1p558erzwa3n36x6pnp4yvgcaauzsahz39rg0f7plu9s5wg0jyrgns53zgme')">📋</span>
         </p>
     </div>
     <script>
